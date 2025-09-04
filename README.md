@@ -8,7 +8,7 @@ Please note that `{{REPO_NAME}}` is currently in development and the functionali
 
 ### Resources
 
-The server provides access to two types of resources: Documents or Slack discussions
+The server provides access to two types of resources: Documents or Slack discussions.
 
 ### Tools
 
@@ -16,7 +16,7 @@ The server provides access to two types of resources: Documents or Slack discuss
 
     - Send a block of text and retrieve cosine similar matches from your connected Rememberizer personal/team internal knowledge and memory repository
     - Input:
-        - `match_this` (string): Up to a 400-word sentence for which you wish to find semantically similar chunks of knowledge
+        - `match_this` (string): A query of up to 400 words for which you wish to find semantically similar chunks of knowledge
         - `n_results` (integer, optional): Number of semantically similar chunks of text to return. Use 'n_results=3' for up to 5, and 'n_results=10' for more information
         - `from_datetime_ISO8601` (string, optional): Start date in ISO 8601 format with timezone (e.g., 2023-01-01T00:00:00Z). Use this to filter results from a specific date
         - `to_datetime_ISO8601` (string, optional): End date in ISO 8601 format with timezone (e.g., 2024-01-01T00:00:00Z). Use this to filter results until a specific date
@@ -26,8 +26,8 @@ The server provides access to two types of resources: Documents or Slack discuss
 
     - Search for documents in Rememberizer in its personal/team internal knowledge and memory repository using a simple query that returns the results of an agentic search. The search may include sources such as Slack discussions, Gmail, Dropbox documents, Google Drive documents, and uploaded files
     - Input:
-        - `query` (string): Up to a 400-word sentence for which you wish to find semantically similar chunks of knowledge
-        - `user_context` (string, optional): The additional context for the query. You might need to summarize the conversation up to this point for better context-awared results
+        - `query` (string): A query of up to 400 words for which you wish to find semantically similar chunks of knowledge
+        - `user_context` (string, optional): The additional context for the query. You might need to summarize the conversation up to this point for better context-aware results
         - `n_results` (integer, optional): Number of semantically similar chunks of text to return. Use 'n_results=3' for up to 5, and 'n_results=10' for more information
         - `from_datetime_ISO8601` (string, optional): Start date in ISO 8601 format with timezone (e.g., 2023-01-01T00:00:00Z). Use this to filter results from a specific date
         - `to_datetime_ISO8601` (string, optional): End date in ISO 8601 format with timezone (e.g., 2024-01-01T00:00:00Z). Use this to filter results until a specific date
@@ -63,11 +63,11 @@ The server provides access to two types of resources: Documents or Slack discuss
 
 ## Installation
 
-### Via SkyDeck AI Helper App
+### Via MseeP AI Helper App
 
-If you have SkyDeck AI Helper app installed, you can search for "Rememberizer" and install the {{REPO_NAME}}.
+If you have the MseeP AI Helper app installed, you can search for "Rememberizer" and install the {{REPO_NAME}}.
 
-![SkyDeck AI Helper](https://docs.rememberizer.ai/~gitbook/image?url=https%3A%2F%2F2952947711-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FyNqpTh7Mh66N0RnO0k24%252Fuploads%252FYyy7b70uYnO8Gm5V7spp%252Fimage.png%3Falt%3Dmedia%26token%3D008d56ea-44f8-482a-a889-f7d933f1d734&width=768&dpr=2&quality=100&sign=661e8789&sv=2)
+![MseeP AI Helper](https://github.com/user-attachments/assets/691d2518-f198-4eb2-b594-9638545f53ac)
 
 ## Configuration
 
@@ -80,13 +80,13 @@ Add this to your `claude_desktop_config.json`:
   "rememberizer": {
       "command": "uvx",
       "args": ["{{REPO_NAME}}"]
-    },
+    }
 }
 ```
 
-### Usage with SkyDeck AI Helper App
+### Usage with MseeP AI Helper App
 
-With support from the Rememberizer MCP server for Common Knowledge, you can now ask the following questions in your Claude Desktop app or SkyDeck AI GenStudio
+With support from the Rememberizer MCP server for Common Knowledge, you can now ask the following questions in your Claude Desktop app or SkyDeck AI GenStudio:
 
 -   _What is this Common Knowledge?_
 
