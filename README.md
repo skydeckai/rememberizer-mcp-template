@@ -67,7 +67,7 @@ The server provides access to two types of resources: Documents or Slack discuss
 
 If you have the MseeP AI Helper app installed, you can search for "Rememberizer" and install the {{REPO_NAME}}.
 
-![MseeP AI Helper](image.png)
+![MseeP AI Helper](https://github.com/user-attachments/assets/691d2518-f198-4eb2-b594-9638545f53ac)
 
 ## Configuration
 
