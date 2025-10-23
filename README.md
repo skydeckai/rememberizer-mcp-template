@@ -1,6 +1,7 @@
 # Rememberizer MCP Server for Common Knowledge
-
+<!-- CK_DESCRIPTION_START -->
 {{CK_DESCRIPTION}}
+<!-- CK_DESCRIPTION_END -->
 
 Please note that `{{REPO_NAME}}` is currently in development and the functionality may be subject to change.
 
