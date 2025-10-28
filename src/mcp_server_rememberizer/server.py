@@ -1,6 +1,5 @@
 import json
 import logging
-import os
 
 import mcp.server.stdio
 import mcp.types as types
@@ -18,6 +17,7 @@ from mcp_server_rememberizer.utils import (
     RETRIEVE_SLACK_PATH,
     SEARCH_PATH,
     APIClient,
+    add_empty_results_guidance,
     RememberizerTools,
     get_document_uri,
 )
@@ -229,15 +229,16 @@ Examples:
         name: str, arguments: dict
     ) -> list[types.TextContent | types.ImageContent | types.EmbeddedResource]:
         match name:
-            case "retrieve_semantically_similar_internal_knowledge":
+            case RememberizerTools.SEARCH.value:
                 match_this = arguments["match_this"]
                 n_results = arguments.get("n_results", 5)
                 from_datetime = arguments.get("from_datetime_ISO8601", None)
                 to_datetime = arguments.get("to_datetime_ISO8601", None)
                 params = {"q": match_this, "n": n_results, "from": from_datetime, "to": to_datetime}
                 data = await client.get(SEARCH_PATH, params=params)
+                data = add_empty_results_guidance(data, name, bool(from_datetime or to_datetime))
                 return [types.TextContent(type="text", text=str(data))]
-            case "smart_search_internal_knowledge":
+            case RememberizerTools.AGENTIC_SEARCH.value:
                 query = arguments["query"]
                 n_results = arguments.get("n_results", 5)
                 user_context = arguments.get("user_context", None)
@@ -251,20 +252,21 @@ Examples:
                     "to": to_datetime,
                 }
                 data = await client.post(AGENTIC_SEARCH_PATH, data=params)
+                data = add_empty_results_guidance(data, name, bool(from_datetime or to_datetime))
                 return [types.TextContent(type="text", text=str(data))]
-            case "list_internal_knowledge_systems":
+            case RememberizerTools.LIST_INTEGRATIONS.value:
                 data = await client.get(LIST_INTEGRATIONS_PATH)
                 return [types.TextContent(type="text", text=str(data.get("data", [])))]
-            case "rememberizer_account_information":
+            case RememberizerTools.ACCOUNT_INFORMATION.value:
                 data = await client.get(ACCOUNT_INFORMATION_PATH)
                 return [types.TextContent(type="text", text=str(data))]
-            case "list_personal_team_knowledge_documents":
+            case RememberizerTools.LIST_DOCUMENTS.value:
                 page = arguments.get("page", 1)
                 page_size = arguments.get("page_size", 100)
                 params = {"page": page, "page_size": page_size}
                 data = await client.get(LIST_DOCUMENTS_PATH, params=params)
                 return [types.TextContent(type="text", text=str(data))]
-            case "remember_this":
+            case RememberizerTools.MEMORIZE.value:
                 params = {
                     "name": arguments["name"],
                     "content": arguments["content"],
