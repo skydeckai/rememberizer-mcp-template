@@ -55,7 +55,7 @@ class APIClient:
                 f"HTTP {exc.response.status_code} error while fetching {path}: {str(exc)}",
                 exc_info=True,
             )
-            return exc.response.json()  # Return full error message to the client
+            raise McpError(ErrorData(-32000, f"HTTP {exc.response.status_code} from backend"))
         except HTTPError as exc:
             logger.error(
                 f"Connection error while fetching {path}: {str(exc)}", exc_info=True
@@ -75,7 +75,7 @@ class APIClient:
                 f"HTTP {exc.response.status_code} error while posting to {path}: {str(exc)}",
                 exc_info=True,
             )
-            return exc.response.json()  # Return full error message to the client
+            raise McpError(ErrorData(-32000, f"HTTP {exc.response.status_code} from backend"))
         except HTTPError as exc:
             logger.error(
                 f"Connection error while posting to {path}: {str(exc)}", exc_info=True
